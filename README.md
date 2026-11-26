@@ -36,6 +36,7 @@ Migrations:
 - supabase/migrations/202611260001_maake_enterprise_core.sql
 - supabase/migrations/202611260002_maake_harden_policies_and_indexes.sql
 - supabase/migrations/202611260003_maake_restrict_public_customer_data.sql
+- supabase/migrations/202611260004_maake_fix_order_rpc_trim_validation.sql
 
 The migrations create business profile, product, service, business hours, transport route, order, order item, service enquiry and transport enquiry tables. RLS is enabled on every exposed table. Public visitors can read only public catalogue/profile data and submit new requests; they cannot read orders, order items or customer enquiries.
 
