@@ -14,3 +14,57 @@
 .menu-empty{padding:55px 0 70px;border-bottom:1px solid var(--line)}
 .menu-empty h2{font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(28px,4vw,44px);margin:0 0 12px}
 .menu-empty>p:last-child{color:var(--muted);font-size:12px;line-height:1.8}
+
+
+/* Cinematic, scroll-scrubbed Kota hero */
+.kota-story{position:relative;background:#171916;color:#f5f0e8}
+.kota-stage{height:100svh;min-height:680px;position:relative;overflow:hidden;background:radial-gradient(ellipse at 70% 48%,#37342b 0%,#22241f 43%,#171916 78%)}
+.kota-stage:before{content:"";position:absolute;inset:0;background:linear-gradient(115deg,#171916 0%,#171916e8 38%,transparent 78%),radial-gradient(ellipse at 78% 48%,#a36b4322,transparent 55%);pointer-events:none}
+.kota-intro-copy{position:absolute;z-index:3;left:8%;top:19%;width:min(43%,590px)}
+.kota-intro-copy h1{font-family:'Playfair Display',serif;font-size:clamp(44px,6.2vw,88px);font-weight:500;letter-spacing:-.055em;line-height:1.02;margin:0 0 22px}
+.kota-intro-copy h1 em{color:#d1a17a;font-style:normal}
+.kota-intro-copy>p:last-child{font-size:13px;line-height:1.8;color:#c8c3b8}
+.kota-visual{position:absolute;z-index:2;left:67%;top:51%;width:min(59vw,820px);height:min(76vh,700px);transform:translate(-50%,-50%)}
+.kota-layers{position:absolute;inset:0}
+.kota-layer{position:absolute;left:50%;transform:translateX(-50%);filter:drop-shadow(0 13px 12px #08090766);will-change:transform}
+.kota-layer.bread-top{top:17%;width:70%;height:15%;border-radius:48% 48% 13% 13%;background:radial-gradient(ellipse at 50% 20%,#f4d59e 0%,#d9a96d 55%,#8b542f 100%);box-shadow:inset 0 -8px 0 #75462b,inset 0 5px 9px #fff5}
+.kota-layer.lettuce{top:31%;width:76%;height:5%;background:linear-gradient(180deg,#a3b86b,#3d653b);clip-path:polygon(0 45%,5% 5%,13% 42%,21% 0,30% 42%,39% 8%,49% 45%,59% 0,68% 43%,77% 8%,87% 48%,95% 5%,100% 60%,96% 100%,5% 100%)}
+.kota-layer.sauce{top:35%;width:68%;height:3%;border-radius:50%;background:repeating-linear-gradient(170deg,#d69a55 0 7px,#9b4d2d 8px 12px,#e2b66f 13px 17px)}
+.kota-layer.cheese{top:38%;width:72%;height:6%;background:linear-gradient(180deg,#f4d76f,#d89b37);clip-path:polygon(0 0,100% 0,96% 68%,86% 100%,75% 68%,62% 100%,49% 67%,35% 100%,22% 67%,10% 100%,3% 60%)}
+.kota-layer.polony{top:43%;width:68%;height:5%;border-radius:48%;background:radial-gradient(ellipse at 45% 20%,#ed9a82,#b84f4c 70%,#71342f);box-shadow:inset 0 -5px 0 #793a34}
+.kota-layer.vienna{top:47%;width:58%;height:4.5%;border-radius:30px;background:linear-gradient(180deg,#d98b55,#9a4d31 70%,#713923);box-shadow:inset 0 4px 5px #ffd19a88}
+.kota-layer.russian{top:51%;width:66%;height:6%;border-radius:28px;background:repeating-linear-gradient(90deg,#87432b 0 22px,#b9693e 23px 34px,#6f3426 35px 42px);box-shadow:inset 0 5px 7px #f2b47c66}
+.kota-layer.atchar{top:57%;width:68%;height:3.5%;border-radius:50%;background:repeating-linear-gradient(90deg,#8b9a42 0 12px,#d2a24c 13px 22px,#a44e2d 23px 31px)}
+.kota-layer.fries{top:61%;width:74%;height:7%;border-radius:14px;background:repeating-linear-gradient(90deg,transparent 0 9px,#e8b54f 10px 20px,#f5d17b 21px 26px,transparent 27px 34px);filter:drop-shadow(0 8px 7px #09090988)}
+.kota-layer.bread-bottom{top:67%;width:72%;height:13%;border-radius:12% 12% 42% 42%;background:linear-gradient(180deg,#e9c48b,#c28a53 58%,#75462d);box-shadow:inset 0 8px 0 #f3d7a6,inset 0 -9px 0 #704129}
+.kota-labels{position:absolute;inset:0;pointer-events:none}
+.kota-label{position:absolute;display:block;white-space:nowrap;font-size:9px;letter-spacing:.16em;font-weight:700;color:#e6d4bd;opacity:0;transform:translateY(9px)}
+.kota-label:after{content:"";display:inline-block;width:34px;height:1px;background:#b9784e;vertical-align:middle;margin-left:10px}
+.label-0{top:11%;left:2%}.label-1{top:27%;right:0}.label-1:after,.label-3:after,.label-5:after,.label-7:after,.label-9:after{display:none}.label-1:before,.label-3:before,.label-5:before,.label-7:before,.label-9:before{content:"";display:inline-block;width:34px;height:1px;background:#b9784e;vertical-align:middle;margin-right:10px}.label-2{top:36%;left:0}.label-3{top:41%;right:0}.label-4{top:49%;left:0}.label-5{top:54%;right:0}.label-6{top:61%;left:1%}.label-7{top:67%;right:0}.label-8{top:74%;left:5%}.label-9{top:84%;right:5%}
+.kota-conversion{position:absolute;z-index:4;left:8%;bottom:11%;opacity:0;visibility:hidden;transform:translateY(18px)}
+.kota-conversion h2{font-family:'Playfair Display',serif;font-size:clamp(32px,4vw,55px);font-weight:500;letter-spacing:-.04em;margin:0 0 22px;text-transform:uppercase}
+.kota-scroll-hint{position:absolute;z-index:3;right:6%;bottom:7%;font-size:8px;letter-spacing:.2em;color:#bdb5a7}
+.kota-scroll-hint span{font-size:16px;color:#d1a17a;margin-left:10px}
+@media(max-width:900px){.kota-intro-copy{left:6%;width:46%;top:17%}.kota-visual{left:68%;width:66vw}.kota-label{font-size:8px}.kota-conversion{left:6%}}
+@media(max-width:600px){
+.kota-stage{min-height:720px;height:100svh}
+.kota-stage:before{background:linear-gradient(180deg,#171916 0%,#171916e8 32%,transparent 75%)}
+.kota-intro-copy{left:7%;top:9%;width:86%}
+.kota-intro-copy h1{font-size:clamp(39px,11vw,54px);margin-bottom:12px}
+.kota-intro-copy>p:last-child{font-size:11px;margin:0}
+.kota-intro-copy .eyebrow{font-size:8px;margin-bottom:13px}
+.kota-visual{left:50%;top:57%;width:96vw;height:46vh;min-height:330px;max-height:440px}
+.kota-layer.bread-top{width:76%}.kota-layer.lettuce{width:82%}.kota-layer.sauce{width:74%}.kota-layer.cheese{width:78%}.kota-layer.polony{width:74%}.kota-layer.vienna{width:64%}.kota-layer.russian{width:72%}.kota-layer.atchar{width:74%}.kota-layer.fries{width:80%}.kota-layer.bread-bottom{width:78%}
+.kota-labels{inset:auto 4% 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px 5px}
+.kota-label{position:static;white-space:normal;font-size:7px;letter-spacing:.08em;text-align:center;line-height:1.4}
+.kota-label:before,.kota-label:after{display:none!important}
+.kota-conversion{left:7%;right:7%;bottom:8%}
+.kota-conversion h2{font-size:29px;margin-bottom:14px}
+.kota-conversion .eyebrow{font-size:8px;margin-bottom:10px}
+.kota-scroll-hint{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+.kota-label{opacity:1;visibility:visible;transform:none}
+.kota-conversion{opacity:1;visibility:visible;transform:none}
+.kota-scroll-hint{display:none}
+}
