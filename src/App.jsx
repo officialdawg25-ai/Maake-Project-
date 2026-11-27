@@ -1,4 +1,4 @@
-import {useEffect,useRef,useState} from 'react';
+import React,{useEffect,useRef,useState} from 'react';
 import {ArrowRight,ArrowUpRight,ArrowDown,Check,ChevronDown,ShoppingBag,Utensils,BusFront,Truck,TentTree,Toilet,Snowflake,Castle,Package,MapPin,LayoutDashboard,LogOut,Plus,Minus,X,LoaderCircle,Sparkles} from 'lucide-react';
 import {gsap} from 'gsap';import{ScrollTrigger}from'gsap/ScrollTrigger';import{supabase,supabaseConfigured}from'./lib/supabase';
 gsap.registerPlugin(ScrollTrigger);
@@ -40,20 +40,29 @@ return <div className="shell"><div className="topline"><span>MAPHALLE & SURROUND
 
 function KotaHero({onExplore}){
   const root=useRef(null);
+  const sliceNames=['Top bread','Atchar & sauce','Cheese & fillings','Crispy layers','Fresh lettuce','Kota base','Golden chips','Serving board'];
   useEffect(()=>{
     const host=root.current;
-    if(!host||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+    if(!host)return;
+    const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const ctx=gsap.context(()=>{
       const stage=host.querySelector('.kota-stage');
       const photo=host.querySelector('.kota-photo');
+      const slices=gsap.utils.toArray('.kota-slice',host);
+      const labels=gsap.utils.toArray('.kota-layer-label',host);
+      if(reduce){gsap.set('.kota-conversion',{autoAlpha:1,y:0});return;}
       const timeline=gsap.timeline({scrollTrigger:{
-        trigger:host,start:'top top',end:()=>'+='+Math.round(window.innerHeight*2.5),
-        pin:stage,scrub:1,anticipatePin:1,invalidateOnRefresh:true
+        trigger:host,start:'top top',end:()=>'+='+Math.round(window.innerHeight*3.2),
+        pin:stage,scrub:0.8,anticipatePin:1,invalidateOnRefresh:true
       }});
-      timeline.to('.kota-intro-copy',{autoAlpha:0,y:-28,duration:.14},.04);
-      timeline.to(photo,{scale:1.08,y:-12,duration:.42,ease:'none'},.18);
-      timeline.to(photo,{scale:1,y:0,duration:.22,ease:'power2.inOut'},.64);
-      timeline.to('.kota-conversion',{autoAlpha:1,y:0,duration:.18,ease:'power2.out'},.86);
+      timeline.to('.kota-intro-copy',{autoAlpha:0,y:-24,duration:.1},.02);
+      timeline.to(photo,{autoAlpha:0,duration:.08},.16);
+      timeline.to(slices,{y:(i)=>[-95,-65,-30,12,48,82,118,148][i],x:(i)=>i%2===0?[-12,10,-7,8][i%4]:[12,-10,7,-8][i%4],rotation:(i)=>i%2===0?-1.5:1.5,scale:(i)=>1.015,duration:.34,stagger:.035,ease:'power2.out'},.2);
+      timeline.to(labels,{autoAlpha:1,x:0,duration:.16,stagger:.035,ease:'power2.out'},.32);
+      timeline.to(labels,{autoAlpha:0,x:(i)=>i%2===0?-14:14,duration:.12,stagger:.02},.58);
+      timeline.to(slices,{y:0,x:0,rotation:0,scale:1,duration:.32,stagger:.025,ease:'power2.inOut'},.63);
+      timeline.to(photo,{autoAlpha:1,duration:.12},.86);
+      timeline.to('.kota-conversion',{autoAlpha:1,y:0,duration:.16,ease:'power2.out'},.88);
     },host);
     return()=>ctx.revert();
   },[]);
@@ -64,8 +73,9 @@ function KotaHero({onExplore}){
         <h1>More than a meal.<br/><em>It's a Kota experience.</em></h1>
         <p>Discover what goes into every bite.</p>
       </div>
-      <div className="kota-visual" aria-label="Maake Enterprise South African Kota">
-        <img className="kota-photo" src="/images/maake-kota.webp?v=20261127-2" alt="A generously filled South African Kota served on a wooden board with golden chips" loading="eager" decoding="async" fetchPriority="high"/>
+      <div className="kota-visual" aria-label="Maake Enterprise South African Kota, separating into visual layers">
+        <img className="kota-photo" src="/images/maake-kota.webp?v=20261127-3" alt="A generously filled South African Kota served on a wooden board with golden chips" loading="eager" decoding="async" fetchPriority="high"/>
+        {sliceNames.map((name,i)=><React.Fragment key={name}><img className="kota-slice" style={{'--slice':i}} src="/images/maake-kota.webp?v=20261127-3" alt="" aria-hidden="true"/><span className="kota-layer-label" style={{'--slice':i}}>{name}</span></React.Fragment>)}
       </div>
       <div className="kota-conversion">
         <p className="eyebrow light">THE MAAKE KOTA COLLECTION</p>
