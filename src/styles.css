@@ -131,7 +131,7 @@
 }
 
 /* Immediate post-hero Kota collection showcase */
-.kota-collection-preview{background:#171815;color:#f3eee5;padding:clamp(70px,9vh,110px) 5.5% 76px;display:flex;flex-direction:column;justify-content:center;gap:clamp(20px,3vh,34px)}
+.kota-collection-preview{background:#171815;color:#f3eee5;padding:38px 5.5% 76px;display:flex;flex-direction:column;justify-content:flex-start;min-height:0;gap:clamp(20px,3vh,34px)}
 .kota-preview-heading{display:grid;grid-template-columns:1fr auto;align-items:end;column-gap:30px}
 .kota-preview-heading .eyebrow{grid-column:1/-1;color:#c49b70}
 .kota-preview-heading h2{font-size:clamp(44px,5.5vw,72px);line-height:.94;letter-spacing:-.055em;margin:0}
@@ -153,7 +153,7 @@
 .kota-collection-preview .story-chapter{color:#aaa49a}
 @media(max-width:900px){.kota-preview-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:600px){
- .kota-collection-preview{padding:78px 6% 76px;gap:20px;min-height:100svh}
+ .kota-collection-preview{padding:24px 6% 76px;gap:20px;min-height:0;justify-content:flex-start}
  .kota-preview-heading{grid-template-columns:1fr;gap:10px}
  .kota-preview-heading h2{font-size:47px}
  .kota-preview-heading>p:last-child{max-width:290px}
