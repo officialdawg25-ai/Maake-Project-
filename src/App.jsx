@@ -96,7 +96,7 @@ function KotaHero({onExplore}){
       if(reduce){gsap.set('.kota-conversion',{autoAlpha:1,y:0});return;}
       gsap.set(slices,{autoAlpha:1});
       const timeline=gsap.timeline({scrollTrigger:{
-        trigger:host,start:'top top',end:()=>'+='+Math.round(window.innerHeight*3.2),
+        trigger:host,start:'top top',end:()=>'+='+Math.round(window.innerHeight*1.45),
         pin:stage,scrub:0.8,anticipatePin:1,invalidateOnRefresh:true
       }});
       timeline.to('.kota-intro-copy',{autoAlpha:0,y:-24,duration:.1},.02);
