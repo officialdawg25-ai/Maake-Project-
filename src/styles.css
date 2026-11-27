@@ -68,3 +68,9 @@
 .kota-conversion{opacity:1;visibility:visible;transform:none}
 .kota-scroll-hint{display:none}
 }
+
+
+/* Real Maake Kota photography replaces the CSS food illustration. */
+.kota-photo{display:block;width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 28px 30px #08090788);transform-origin:center center;border-radius:8px;will-change:transform}
+.product-photo img{display:block}
+@media(max-width:600px){.kota-photo{object-fit:contain;max-height:100%}}
