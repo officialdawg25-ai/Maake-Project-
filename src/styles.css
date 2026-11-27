@@ -261,3 +261,15 @@
 @media(prefers-reduced-motion:reduce){
  .dedicated-service-card,.dedicated-service-image img{transition:none;transform:none!important}
 }
+
+/* Clean Kota hero: retain the CTA and remove the oversized visual stage. */
+.kota-stage-clean{height:clamp(430px,68svh,680px);min-height:430px;background:radial-gradient(ellipse at 75% 45%,#292b25 0%,#1d201b 48%,#171916 82%)}
+.kota-stage-clean:before{background:linear-gradient(115deg,#171916 0%,#171916d9 48%,transparent 100%),radial-gradient(ellipse at 78% 48%,#a36b4322,transparent 55%)}
+.kota-conversion-clean{left:8%;right:8%;top:50%;bottom:auto;opacity:1;visibility:visible;transform:translateY(-50%)}
+.kota-conversion-clean h2{margin-bottom:22px}
+@media(max-width:600px){
+  .kota-stage-clean{height:clamp(430px,64svh,570px);min-height:430px}
+  .kota-conversion-clean{left:7%;right:7%;top:50%;bottom:auto}
+  .kota-conversion-clean h2{font-size:29px;margin-bottom:14px}
+  .kota-scroll-hint{display:block;right:7%;bottom:6%;font-size:7px}
+}
