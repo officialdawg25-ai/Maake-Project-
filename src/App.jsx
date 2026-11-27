@@ -1,4 +1,4 @@
-import {useEffect,useState} from 'react';
+import {useEffect,useRef,useState} from 'react';
 import {ArrowRight,ArrowUpRight,ArrowDown,Check,ChevronDown,ShoppingBag,Utensils,BusFront,Truck,TentTree,Toilet,Snowflake,Castle,Package,MapPin,LayoutDashboard,LogOut,Plus,Minus,X,LoaderCircle,Sparkles} from 'lucide-react';
 import {gsap} from 'gsap';import{ScrollTrigger}from'gsap/ScrollTrigger';import{supabase,supabaseConfigured}from'./lib/supabase';
 gsap.registerPlugin(ScrollTrigger);
@@ -10,7 +10,7 @@ const count=cart.reduce((n,x)=>n+x.quantity,0),subtotal=cart.reduce((n,x)=>n+x.p
 const notify=m=>{T(m);setTimeout(()=>T(''),4500)};
 const go=p=>{P(p);D(false);window.scrollTo({top:0,behavior:'smooth'})};
 useEffect(()=>{if(!supabaseConfigured)return;let live=true;Promise.all([supabase.from('business_profile').select('*').maybeSingle(),supabase.from('products').select('*').eq('is_published',true).eq('is_available',true).order('sort_order'),supabase.from('services').select('*').eq('is_active',true).order('sort_order')]).then(([a,b,c])=>{if(!live)return;if(a.data)PRO(a.data);if(!b.error)SP(b.data||[]);if(c.data?.length)SS(c.data)});supabase.auth.getSession().then(({data})=>live&&SE(data.session));const{data:{subscription}}=supabase.auth.onAuthStateChange((_e,s)=>SE(s));return()=>{live=false;subscription.unsubscribe()}},[]);
-useEffect(()=>{const ctx=gsap.context(()=>{gsap.utils.toArray('.reveal').forEach(el=>gsap.fromTo(el,{y:28,opacity:0},{y:0,opacity:1,duration:.8,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 88%',once:true}}));gsap.fromTo('.hero-copy>*',{y:24,opacity:0},{y:0,opacity:1,stagger:.12,duration:.9,ease:'power3.out'});gsap.to('.hero-photo',{yPercent:10,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}})});return()=>ctx.revert()},[page]);
+useEffect(()=>{const ctx=gsap.context(()=>{gsap.utils.toArray('.reveal').forEach(el=>gsap.fromTo(el,{y:28,opacity:0},{y:0,opacity:1,duration:.8,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 88%',once:true}}));});return()=>ctx.revert()},[page]);
 const add=p=>{C(old=>{const f=old.find(x=>x.id===p.id);return f?old.map(x=>x.id===p.id?{...x,quantity:x.quantity+1}:x):[...old,{...p,quantity:1}]});notify(p.name+' added to basket')};
 const qty=(id,d)=>C(old=>old.map(x=>x.id===id?{...x,quantity:x.quantity+d}:x).filter(x=>x.quantity>0));
 async function order(e){e.preventDefault();if(!supabaseConfigured)return notify('Supabase is not configured.');B(true);const{data,error}=await supabase.rpc('submit_maake_order',{p_customer_name:checkout.name,p_customer_phone:checkout.phone,p_fulfilment_method:checkout.method,p_delivery_address:checkout.address||null,p_customer_notes:checkout.notes||null,p_items:cart.map(x=>({product_id:x.id,quantity:x.quantity}))});B(false);if(error)return notify(error.message);C([]);D(false);CO({name:'',phone:'',method:'collection',address:'',notes:''});notify('Order request received. Reference: '+String(data).slice(0,8).toUpperCase())}
@@ -22,9 +22,9 @@ async function updateStatus(id,status){SB(id);const{error}=await supabase.from('
 useEffect(()=>{if(page==='admin'&&session)loadOrders()},[page,session]);
 const icons={catering:Utensils,event_equipment:TentTree,sanitation:Toilet,cold_storage:Snowflake,entertainment:Castle};
 return <div className="shell"><div className="topline"><span>MAPHALLE & SURROUNDING AREAS</span><span>FOOD · TRANSPORT · EVENTS</span></div><header className="header"><button className="brand" onClick={()=>go('home')}><b>MAAKE<span>.</span></b><small>ENTERPRISE</small></button><nav>{[['Food','food'],['Services','services'],['Transport','transport'],['Our story','story']].map(([n,p])=><button className={page===p?'active':''} onClick={()=>go(p)} key={p}>{n}</button>)}</nav><div className="head-actions"><button className="bag" onClick={()=>D(true)}><ShoppingBag size={18}/><i>{count}</i></button><button className="admin-icon" onClick={()=>go('admin')}><LayoutDashboard size={18}/></button></div></header>
-{page==='home'&&<main><section className="hero"><div className="hero-photo"/><div className="hero-overlay"/><div className="hero-copy"><p className="eyebrow light">A LOCAL ENTERPRISE · MAPHALLE</p><h1>Good food.<br/><em>Great moments.</em><br/>Reliable solutions.</h1><p>One local enterprise bringing together the things that keep life moving — from a satisfying meal to the details that make an occasion happen.</p><div className="actions"><button className="btn copper" onClick={()=>go('food')}>Explore the menu <ArrowUpRight size={16}/></button><button className="link light" onClick={()=>go('services')}>Discover our services <ArrowDown size={15}/></button></div></div><div className="hero-foot"><span>FOOD / TRANSPORT / EVENTS</span><span>MAPHALLE, LIMPOPO</span></div></section>
+{page==='home'&&<main><KotaHero onExplore={()=>go('food')}/>
 <section className="intro pad reveal"><div className="kicker">A SINGLE POINT OF CONNECTION <span>— 01</span></div><div className="intro-grid"><h2>More than a service.<br/><em>A partner in everyday life.</em></h2><div><p>Maake Enterprise brings practical services together under one name. Explore our food offering, enquire about transport, or find the equipment and support you need for your next event.</p><button className="link" onClick={()=>go('story')}>Get to know Maake <ArrowUpRight size={15}/></button></div></div></section>
-<section className="food-feature"><div className="food-photo"/><div className="feature-copy reveal"><p className="eyebrow">01 / FOOD & CATERING</p><h2>Made to<br/><em>satisfy.</em></h2><p>South African favourites, familiar flavours and meals worth coming back for. Browse the menu and place an order directly.</p><button className="btn dark" onClick={()=>go('food')}>Discover the menu <ArrowUpRight size={16}/></button></div></section>
+<section className="food-feature"><div className="food-photo"/><div className="feature-copy reveal"><p className="eyebrow">01 / FOOD & CATERING</p><h2>Made to<br/><em>satisfy.</em></h2><p>A South African favourite, thoughtfully presented. Explore the Kota collection and order directly from Maake Enterprise.</p><button className="btn dark" onClick={()=>go('food')}>Explore the Kota collection <ArrowUpRight size={16}/></button></div></section>
 <section className="services pad"><div className="section-head reveal"><div><p className="eyebrow">02 / SERVICES</p><h2>Everything else,<br/><em>taken care of.</em></h2></div><button className="link" onClick={()=>go('services')}>View all services <ArrowUpRight size={15}/></button></div><ServiceGrid items={services.slice(0,4)} icons={icons} choose={s=>{E({...enq,service_name:s.name});go('services')}}/></section>
 <section className="transport-feature"><div className="transport-copy"><p className="eyebrow light">03 / TRANSPORT</p><h2>Wherever you<br/><em>need to be.</em></h2><p>Scheduled route information and private transport enquiries for Maphalle and surrounding areas.</p><button className="btn copper" onClick={()=>go('transport')}>Explore transport <ArrowUpRight size={16}/></button></div><div className="transport-photo"/></section>
 <section className="closing pad reveal"><p className="eyebrow">MAAKE ENTERPRISE / MAPHALLE</p><h2>Let's make it<br/><em>happen.</em></h2><p>Have a question, an order or an event in mind? We'd be glad to hear from you.</p><button className="btn dark" onClick={()=>go('services')}>Start an enquiry <ArrowUpRight size={16}/></button></section></main>}
@@ -36,6 +36,65 @@ return <div className="shell"><div className="topline"><span>MAPHALLE & SURROUND
 <footer><div className="footer-main"><div><b className="footer-logo">MAAKE<span>.</span></b><small>ENTERPRISE</small><p>Food. Transport. Events. Solutions.</p></div><div className="footer-nav"><button onClick={()=>go('food')}>Food & catering</button><button onClick={()=>go('services')}>Event services</button><button onClick={()=>go('transport')}>Transport</button><button onClick={()=>go('story')}>Our story</button></div><div className="footer-place"><MapPin size={16}/>Maphalle & surrounding areas<br/>Limpopo, South Africa</div></div><div className="footer-bottom"><span>© {new Date().getFullYear()} Maake Enterprise</span><span>DEMO EXPERIENCE · BUSINESS DETAILS TO BE CONFIRMED</span><button onClick={()=>go('admin')}>Business login <ArrowUpRight size={13}/></button></div></footer>
 {drawer&&<div className="backdrop" onClick={()=>D(false)}><aside className="drawer" onClick={e=>e.stopPropagation()}><div className="drawer-head"><div><p className="eyebrow">YOUR ORDER</p><h2>Basket ({count})</h2></div><button className="close" onClick={()=>D(false)}><X/></button></div>{!cart.length?<p className="empty">Your basket is waiting. <button className="link" onClick={()=>go('food')}>Explore menu</button></p>:<><div className="cart-items">{cart.map(p=><div className="cart-item" key={p.id}><div><b>{p.name}</b><small>{money(p.price)} each</small><div className="quantity"><button onClick={()=>qty(p.id,-1)}><Minus size={13}/></button>{p.quantity}<button onClick={()=>qty(p.id,1)}><Plus size={13}/></button></div></div><b>{money(p.price*p.quantity)}</b></div>)}</div><div className="cart-total">Subtotal <b>{money(subtotal)}</b></div><form className="checkout" onSubmit={order}><p className="eyebrow">CUSTOMER DETAILS</p><label>Full name<input required minLength="2" value={checkout.name} onChange={e=>CO({...checkout,name:e.target.value})}/></label><label>Phone number<input required value={checkout.phone} onChange={e=>CO({...checkout,phone:e.target.value})}/></label><label>Fulfilment<select value={checkout.method} onChange={e=>CO({...checkout,method:e.target.value})}><option value="collection">Collection</option><option value="delivery">Delivery (subject to confirmation)</option></select></label>{checkout.method==='delivery'&&<label>Delivery address<input required value={checkout.address} onChange={e=>CO({...checkout,address:e.target.value})}/></label>}<label>Order notes<textarea rows="2" value={checkout.notes} onChange={e=>CO({...checkout,notes:e.target.value})}/></label><button className="btn copper submit" disabled={busy}>{busy?'Submitting…':'Submit order request'} <ArrowUpRight size={15}/></button><small>Payment, delivery fee and order acceptance are confirmed separately.</small></form></>}</aside></div>}
 {toast&&<div className="toast"><Check size={16}/>{toast}<button onClick={()=>T('')}><X size={13}/></button></div>}{profile.is_demo&&<div className="demo-bar">DEMONSTRATION WEBSITE · SAMPLE MENU & PRICES</div>}</div>
+}
+
+const kotaIngredients=[
+  {name:'BREAD',layer:'bread-top',offset:-210},
+  {name:'LETTUCE',layer:'lettuce',offset:-165},
+  {name:'SIGNATURE SAUCE',layer:'sauce',offset:-120},
+  {name:'CHEESE',layer:'cheese',offset:-75},
+  {name:'POLONY',layer:'polony',offset:-25},
+  {name:'VIENNA',layer:'vienna',offset:25},
+  {name:'RUSSIAN',layer:'russian',offset:75},
+  {name:'ATCHAR',layer:'atchar',offset:125},
+  {name:'FRIES',layer:'fries',offset:175},
+  {name:'BREAD',layer:'bread-bottom',offset:220}
+];
+function KotaHero({onExplore}){
+  const root=useRef(null);
+  useEffect(()=>{
+    const host=root.current;
+    if(!host||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+    const ctx=gsap.context(()=>{
+      const stage=host.querySelector('.kota-stage');
+      const layers=gsap.utils.toArray('.kota-layer',host);
+      const labels=gsap.utils.toArray('.kota-label',host);
+      const timeline=gsap.timeline({scrollTrigger:{
+        trigger:host,start:'top top',end:()=>'+='+Math.round(window.innerHeight*2.5),
+        pin:stage,scrub:1,anticipatePin:1,invalidateOnRefresh:true
+      }});
+      timeline.to('.kota-intro-copy',{autoAlpha:0,y:-28,duration:.14},.04);
+      kotaIngredients.forEach((item,index)=>timeline.to(layers[index],{y:item.offset,duration:.25,ease:'none'},.16+index*.012));
+      timeline.to(labels,{autoAlpha:1,y:0,duration:.16,stagger:.012,ease:'power2.out'},.43);
+      timeline.to(labels,{autoAlpha:0,duration:.12},.62);
+      timeline.to(layers,{y:0,duration:.24,stagger:.008,ease:'power2.inOut'},.68);
+      timeline.to('.kota-conversion',{autoAlpha:1,y:0,duration:.18,ease:'power2.out'},.86);
+    },host);
+    return()=>ctx.revert();
+  },[]);
+  return <section className="kota-story" ref={root}>
+    <div className="kota-stage">
+      <div className="kota-intro-copy">
+        <p className="eyebrow light">MAAKE ENTERPRISE · KOTA COLLECTION</p>
+        <h1>More than a meal.<br/><em>It's a Kota experience.</em></h1>
+        <p>Discover what goes into every bite.</p>
+      </div>
+      <div className="kota-visual" aria-label="Illustrated exploded view of a South African Kota">
+        <div className="kota-layers">
+          {kotaIngredients.map(item=><div key={item.layer} className={'kota-layer '+item.layer}/>)}
+        </div>
+        <div className="kota-labels">
+          {kotaIngredients.map((item,index)=><span key={item.layer} className={'kota-label label-'+index}>{String(index+1).padStart(2,'0')} / {item.name}</span>)}
+        </div>
+      </div>
+      <div className="kota-conversion">
+        <p className="eyebrow light">THE MAAKE KOTA COLLECTION</p>
+        <h2>Ready for your next bite?</h2>
+        <button className="btn copper" onClick={onExplore}>Explore the Kota menu <ArrowUpRight size={16}/></button>
+      </div>
+      <div className="kota-scroll-hint">SCROLL TO EXPLORE <span>↓</span></div>
+    </div>
+  </section>;
 }
 function PageIntro({n,label,title,copy}){return <section className="page-intro reveal"><div className="kicker">{label} <span>— {n}</span></div><h1>{title}</h1><p>{copy}</p></section>}
 function ServiceGrid({items,icons,choose}){return <div className="service-grid">{items.map((s,i)=>{const Icon=icons[s.category]||Package;return <article className="service-card reveal" key={s.slug}><div className="service-image">{s.image_url&&<img src={s.image_url} alt=""/>}<span>0{i+1}</span></div><div className="service-body"><Icon size={19}/><h3>{s.name}</h3><p>{s.description}</p><button className="link" onClick={()=>choose(s)}>Make an enquiry <ArrowUpRight size={14}/></button></div></article>})}</div>}
