@@ -82,46 +82,9 @@ return <div className="shell"><div className="topline"><span>MAPHALLE & SURROUND
 }
 
 function KotaHero({onExplore}){
-  const root=useRef(null);
-  const sliceNames=['Top bread','Atchar & sauce','Cheese & fillings','Crispy layers','Fresh lettuce','Kota base','Golden chips','Serving board'];
-  useEffect(()=>{
-    const host=root.current;
-    if(!host)return;
-    const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const ctx=gsap.context(()=>{
-      const stage=host.querySelector('.kota-stage');
-      const photo=host.querySelector('.kota-photo');
-      const slices=gsap.utils.toArray('.kota-slice',host);
-      const labels=gsap.utils.toArray('.kota-layer-label',host);
-      if(reduce){gsap.set('.kota-conversion',{autoAlpha:1,y:0});return;}
-      gsap.set(slices,{autoAlpha:1});
-      const timeline=gsap.timeline({scrollTrigger:{
-        trigger:host,start:'top top',end:()=>'+='+Math.round(window.innerHeight*1.45),
-        pin:stage,scrub:0.8,anticipatePin:1,invalidateOnRefresh:true
-      }});
-      timeline.to('.kota-intro-copy',{autoAlpha:0,y:-24,duration:.1},.02);
-      timeline.to(photo,{autoAlpha:0,duration:.08},.16);
-      timeline.to(slices,{y:(i)=>[-95,-65,-30,12,48,82,118,148][i],x:(i)=>i%2===0?[-12,10,-7,8][i%4]:[12,-10,7,-8][i%4],rotation:(i)=>i%2===0?-1.5:1.5,scale:(i)=>1.015,duration:.34,stagger:.035,ease:'power2.out'},.2);
-      timeline.to(labels,{autoAlpha:1,x:0,duration:.16,stagger:.035,ease:'power2.out'},.32);
-      timeline.to(labels,{autoAlpha:0,x:(i)=>i%2===0?-14:14,duration:.12,stagger:.02},.58);
-      timeline.to(slices,{y:0,x:0,rotation:0,scale:1,duration:.32,stagger:.025,ease:'power2.inOut'},.63);
-      timeline.to(photo,{autoAlpha:1,duration:.12},.86);
-      timeline.to('.kota-conversion',{autoAlpha:1,y:0,duration:.16,ease:'power2.out'},.88);
-    },host);
-    return()=>ctx.revert();
-  },[]);
-  return <section className="kota-story" ref={root}>
-    <div className="kota-stage">
-      <div className="kota-intro-copy">
-        <p className="eyebrow light">MAAKE ENTERPRISE · KOTA COLLECTION</p>
-        <h1>More than a meal.<br/><em>It's a Kota experience.</em></h1>
-        <p>Discover what goes into every bite.</p>
-      </div>
-      <div className="kota-visual" aria-label="Maake Enterprise South African Kota, separating into visual layers">
-        <img className="kota-photo" src="/images/maake-kota.webp?v=20261127-3" alt="A generously filled South African Kota served on a wooden board with golden chips" loading="eager" decoding="async" fetchPriority="high"/>
-        {sliceNames.map((name,i)=><React.Fragment key={name}><img className="kota-slice" style={{'--slice':i,clipPath:`inset(${i*12.5}% 0 ${(7-i)*12.5}% 0)`}} src="/images/maake-kota.webp?v=20261127-3" alt="" aria-hidden="true"/><span className="kota-layer-label" style={{'--slice':i}}>{name}</span></React.Fragment>)}
-      </div>
-      <div className="kota-conversion">
+  return <section className="kota-story" aria-label="Maake Kota collection introduction">
+    <div className="kota-stage kota-stage-clean">
+      <div className="kota-conversion kota-conversion-clean">
         <p className="eyebrow light">THE MAAKE KOTA COLLECTION</p>
         <h2>Ready for your next bite?</h2>
         <button className="btn copper" onClick={onExplore}>Explore the Kota menu <ArrowUpRight size={16}/></button>
