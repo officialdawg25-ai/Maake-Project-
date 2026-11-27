@@ -19,7 +19,7 @@ const scenes=gsap.utils.toArray('.story-scene',root);
 if(reduce){gsap.set(root.querySelectorAll('.story-copy-block,.story-scene .reveal,.service-card'),{clearProps:'all'});return;}
 scenes.forEach((scene,index)=>{
 const visual=scene.querySelector('.food-photo,.transport-photo');
-const copy=scene.querySelectorAll('.story-copy-block,.section-head,.service-card,.intro-grid h2,.intro-grid>div,.closing>*');
+const copy=scene.querySelectorAll('.story-copy-block,.section-head,.intro-grid h2,.intro-grid>div,.closing>*');
 const targets=copy.length?copy:scene.querySelectorAll('.feature-copy,.transport-copy');
 const tl=gsap.timeline({scrollTrigger:{trigger:scene,start:'top top',end:()=>'+='+Math.round(window.innerHeight*.9),pin:true,pinSpacing:true,scrub:1,anticipatePin:1,invalidateOnRefresh:true}});
 if(visual)tl.fromTo(visual,{scale:1.12,filter:'brightness(.68)'},{scale:1,filter:'brightness(1)',duration:.55,ease:'none'},0);
