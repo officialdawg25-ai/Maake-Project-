@@ -3,11 +3,6 @@
 @media(max-width:600px){.topline{padding:0 5%;font-size:7px}.topline span:last-child{display:none}.header{height:66px}.brand b{font-size:24px}.header nav{position:absolute;top:66px;left:0;right:0;background:var(--paper);padding:12px 5%;justify-content:space-between;gap:8px;border-bottom:1px solid var(--line)}.header nav button{font-size:10px;padding:5px 0}.hero{margin-top:44px;min-height:660px;height:calc(100svh - 140px);padding:9% 7%}.hero-photo{background-position:58% center}.hero-overlay{background:linear-gradient(90deg,#111210e0,#11121059),linear-gradient(0deg,#11121059,transparent)}.hero h1{font-size:54px}.hero-copy>p:not(.eyebrow){font-size:12px;max-width:340px}.actions{align-items:flex-start;flex-direction:column;gap:22px}.hero-foot{font-size:7px;bottom:18px}.pad{padding:75px 7%}.intro-grid{grid-template-columns:1fr;gap:12px;margin-top:30px}.intro-grid h2,.section-head h2{font-size:43px}.food-feature{grid-template-columns:1fr}.food-photo{min-height:330px}.feature-copy{padding:55px 8%}.feature-copy h2,.transport-copy h2{font-size:58px}.section-head{align-items:flex-start;flex-direction:column;gap:22px}.service-grid,.service-grid:has(.service-card:nth-child(5)){grid-template-columns:1fr 1fr;gap:10px}.service-image,.service-grid:has(.service-card:nth-child(5)) .service-image{height:155px}.service-body{padding:16px 13px 18px}.service-body h3{font-size:17px}.service-body p{font-size:10px;min-height:58px}.transport-feature{grid-template-columns:1fr}.transport-copy{padding:65px 8%}.transport-photo{min-height:300px}.closing{padding-top:85px;padding-bottom:95px}footer{padding:48px 7% 28px}.footer-main{grid-template-columns:1fr 1fr;gap:30px 15px}.footer-logo{font-size:31px}.footer-place{grid-column:1/-1}.footer-bottom{flex-wrap:wrap;gap:14px;font-size:8px}.footer-bottom span:nth-child(2){width:100%;order:3}.inner{padding:90px 7% 100px}.page-intro{margin-bottom:40px}.page-intro h1{font-size:51px}.menu-line{font-size:7px;gap:8px}.products{grid-template-columns:1fr;gap:16px}.product-photo{height:250px}.product-info p{min-height:0}.notice{align-items:flex-start;flex-wrap:wrap;padding:17px}.notice p{flex-basis:80%}.notice .link{margin-left:32px}.form-panel{padding:28px 20px;margin-top:40px}.form-panel h2{font-size:42px}.form-grid{grid-template-columns:1fr}.form-grid .full{grid-column:auto}.transport-cards{grid-template-columns:1fr}.transport-cards article{padding:28px}.transport-cards h2{font-size:34px}.story-photo{height:280px}.story-copy{grid-template-columns:1fr;gap:0;padding:45px 0}.story-copy h2{font-size:42px}.admin-order{flex-direction:column}.drawer{padding:22px}.toast{bottom:45px;width:max-content;max-width:92vw}.demo-bar{font-size:7px}}
 
 
-/* Approved Kota catalogue artwork fallback: intentionally graphic until product photography is supplied. */
-.product-art{height:100%;width:100%;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;background:radial-gradient(ellipse at 50% 44%,#766047 0%,#38372f 43%,#22231f 100%);color:#f4eadb}
-.product-art:before{content:"";position:absolute;left:14%;right:14%;top:37%;height:27%;border-radius:18% 18% 28% 28%;background:linear-gradient(180deg,#e8c18a 0%,#b77b48 44%,#75472e 100%);box-shadow:0 18px 22px #1118,0 -8px 0 -2px #e6bb4d,0 -15px 0 -4px #6c8b46,0 -23px 0 -7px #d88a47,0 -31px 0 -10px #f0d28e}
-.product-art:after{content:"";position:absolute;left:22%;right:22%;top:29%;height:12%;border-radius:50%;background:linear-gradient(180deg,#edc98e,#b87945);box-shadow:0 5px 10px #1117}
-.product-art span,.product-art b,.product-art i{position:relative;z-index:1}
 .product-art span{font-size:8px;letter-spacing:.28em;color:#e4c9a8;margin-top:-82px}
 .product-art b{font-family:'Playfair Display',serif;font-size:clamp(38px,5vw,64px);font-weight:600;letter-spacing:-.06em;text-shadow:0 3px 15px #1119;margin-top:72px}
 .product-art i{font-style:normal;font-size:11px;letter-spacing:.12em;color:#e7c39d;margin-top:4px}
@@ -25,27 +20,11 @@
 .kota-intro-copy h1 em{color:#d1a17a;font-style:normal}
 .kota-intro-copy>p:last-child{font-size:13px;line-height:1.8;color:#c8c3b8}
 .kota-visual{position:absolute;z-index:2;left:67%;top:51%;width:min(59vw,820px);height:min(76vh,700px);transform:translate(-50%,-50%)}
-.kota-layers{position:absolute;inset:0}
-.kota-layer{position:absolute;left:50%;transform:translateX(-50%);filter:drop-shadow(0 13px 12px #08090766);will-change:transform}
-.kota-layer.bread-top{top:17%;width:70%;height:15%;border-radius:48% 48% 13% 13%;background:radial-gradient(ellipse at 50% 20%,#f4d59e 0%,#d9a96d 55%,#8b542f 100%);box-shadow:inset 0 -8px 0 #75462b,inset 0 5px 9px #fff5}
-.kota-layer.lettuce{top:31%;width:76%;height:5%;background:linear-gradient(180deg,#a3b86b,#3d653b);clip-path:polygon(0 45%,5% 5%,13% 42%,21% 0,30% 42%,39% 8%,49% 45%,59% 0,68% 43%,77% 8%,87% 48%,95% 5%,100% 60%,96% 100%,5% 100%)}
-.kota-layer.sauce{top:35%;width:68%;height:3%;border-radius:50%;background:repeating-linear-gradient(170deg,#d69a55 0 7px,#9b4d2d 8px 12px,#e2b66f 13px 17px)}
-.kota-layer.cheese{top:38%;width:72%;height:6%;background:linear-gradient(180deg,#f4d76f,#d89b37);clip-path:polygon(0 0,100% 0,96% 68%,86% 100%,75% 68%,62% 100%,49% 67%,35% 100%,22% 67%,10% 100%,3% 60%)}
-.kota-layer.polony{top:43%;width:68%;height:5%;border-radius:48%;background:radial-gradient(ellipse at 45% 20%,#ed9a82,#b84f4c 70%,#71342f);box-shadow:inset 0 -5px 0 #793a34}
-.kota-layer.vienna{top:47%;width:58%;height:4.5%;border-radius:30px;background:linear-gradient(180deg,#d98b55,#9a4d31 70%,#713923);box-shadow:inset 0 4px 5px #ffd19a88}
-.kota-layer.russian{top:51%;width:66%;height:6%;border-radius:28px;background:repeating-linear-gradient(90deg,#87432b 0 22px,#b9693e 23px 34px,#6f3426 35px 42px);box-shadow:inset 0 5px 7px #f2b47c66}
-.kota-layer.atchar{top:57%;width:68%;height:3.5%;border-radius:50%;background:repeating-linear-gradient(90deg,#8b9a42 0 12px,#d2a24c 13px 22px,#a44e2d 23px 31px)}
-.kota-layer.fries{top:61%;width:74%;height:7%;border-radius:14px;background:repeating-linear-gradient(90deg,transparent 0 9px,#e8b54f 10px 20px,#f5d17b 21px 26px,transparent 27px 34px);filter:drop-shadow(0 8px 7px #09090988)}
-.kota-layer.bread-bottom{top:67%;width:72%;height:13%;border-radius:12% 12% 42% 42%;background:linear-gradient(180deg,#e9c48b,#c28a53 58%,#75462d);box-shadow:inset 0 8px 0 #f3d7a6,inset 0 -9px 0 #704129}
-.kota-labels{position:absolute;inset:0;pointer-events:none}
-.kota-label{position:absolute;display:block;white-space:nowrap;font-size:9px;letter-spacing:.16em;font-weight:700;color:#e6d4bd;opacity:0;transform:translateY(9px)}
-.kota-label:after{content:"";display:inline-block;width:34px;height:1px;background:#b9784e;vertical-align:middle;margin-left:10px}
-.label-0{top:11%;left:2%}.label-1{top:27%;right:0}.label-1:after,.label-3:after,.label-5:after,.label-7:after,.label-9:after{display:none}.label-1:before,.label-3:before,.label-5:before,.label-7:before,.label-9:before{content:"";display:inline-block;width:34px;height:1px;background:#b9784e;vertical-align:middle;margin-right:10px}.label-2{top:36%;left:0}.label-3{top:41%;right:0}.label-4{top:49%;left:0}.label-5{top:54%;right:0}.label-6{top:61%;left:1%}.label-7{top:67%;right:0}.label-8{top:74%;left:5%}.label-9{top:84%;right:5%}
 .kota-conversion{position:absolute;z-index:4;left:8%;bottom:11%;opacity:0;visibility:hidden;transform:translateY(18px)}
 .kota-conversion h2{font-family:'Playfair Display',serif;font-size:clamp(32px,4vw,55px);font-weight:500;letter-spacing:-.04em;margin:0 0 22px;text-transform:uppercase}
 .kota-scroll-hint{position:absolute;z-index:3;right:6%;bottom:7%;font-size:8px;letter-spacing:.2em;color:#bdb5a7}
 .kota-scroll-hint span{font-size:16px;color:#d1a17a;margin-left:10px}
-@media(max-width:900px){.kota-intro-copy{left:6%;width:46%;top:17%}.kota-visual{left:68%;width:66vw}.kota-label{font-size:8px}.kota-conversion{left:6%}}
+@media(max-width:900px){.kota-intro-copy{left:6%;width:46%;top:17%}.kota-visual{left:68%;width:66vw}{font-size:8px}.kota-conversion{left:6%}}
 @media(max-width:600px){
 .kota-stage{min-height:720px;height:100svh}
 .kota-stage:before{background:linear-gradient(180deg,#171916 0%,#171916e8 32%,transparent 75%)}
@@ -55,8 +34,6 @@
 .kota-intro-copy .eyebrow{font-size:8px;margin-bottom:13px}
 .kota-visual{left:50%;top:57%;width:96vw;height:46vh;min-height:330px;max-height:440px}
 .kota-layer.bread-top{width:76%}.kota-layer.lettuce{width:82%}.kota-layer.sauce{width:74%}.kota-layer.cheese{width:78%}.kota-layer.polony{width:74%}.kota-layer.vienna{width:64%}.kota-layer.russian{width:72%}.kota-layer.atchar{width:74%}.kota-layer.fries{width:80%}.kota-layer.bread-bottom{width:78%}
-.kota-labels{inset:auto 4% 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px 5px}
-.kota-label{position:static;white-space:normal;font-size:7px;letter-spacing:.08em;text-align:center;line-height:1.4}
 .kota-label:before,.kota-label:after{display:none!important}
 .kota-conversion{left:7%;right:7%;bottom:8%}
 .kota-conversion h2{font-size:29px;margin-bottom:14px}
@@ -64,13 +41,12 @@
 .kota-scroll-hint{display:none}
 }
 @media(prefers-reduced-motion:reduce){
-.kota-label{opacity:1;visibility:visible;transform:none}
 .kota-conversion{opacity:1;visibility:visible;transform:none}
 .kota-scroll-hint{display:none}
 }
 
 
 /* Real Maake Kota photography replaces the CSS food illustration. */
-.kota-photo{display:block;width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 28px 30px #08090788);transform-origin:center center;border-radius:8px;will-change:transform}
+.kota-photo{display:block;width:100%;height:100%;object-fit:contain;object-position:center;filter:drop-shadow(0 28px 30px #08090788);transform-origin:center center;border-radius:8px;will-change:transform}
 .product-photo img{display:block}
 @media(max-width:600px){.kota-photo{object-fit:contain;max-height:100%}}
