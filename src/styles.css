@@ -206,3 +206,58 @@
 .catalogue-row-actions button{border:1px solid #d8d4cc;background:transparent;padding:8px 10px;font-size:10px;cursor:pointer;display:flex;align-items:center;gap:5px}
 .catalogue-row-actions button:hover{background:#171815;color:#fff}
 @media(max-width:650px){.catalogue-admin-head{flex-direction:column}.catalogue-editor{padding:16px}.catalogue-row{grid-template-columns:68px minmax(0,1fr);gap:10px}.catalogue-row>img{width:68px;height:68px}.catalogue-row-actions{grid-column:1/-1;justify-content:flex-start}.catalogue-actions{flex-wrap:wrap}.catalogue-switches{flex-direction:column;gap:10px}}
+
+
+/* Dedicated, pinned catering and mobile-event service chapters */
+.dedicated-services{min-height:100svh;padding:clamp(76px,9vh,112px) 7% 78px;display:grid;grid-template-columns:.82fr 1.18fr;align-items:center;gap:clamp(28px,5vw,76px);isolation:isolate}
+.story-catering{background:#e7e0d4;color:var(--ink)}
+.story-rentals{background:#20211e;color:#f3eee5}
+.dedicated-services-head{max-width:470px}
+.dedicated-services-head .eyebrow{margin-bottom:20px}
+.dedicated-services-head h2{font-family:'Playfair Display',serif;font-size:clamp(43px,5.1vw,70px);line-height:.98;letter-spacing:-.055em;font-weight:500;margin:0 0 22px}
+.dedicated-services-head h2 em{font-style:normal;color:#a96e48}
+.story-rentals .dedicated-services-head h2 em{color:#d1a17a}
+.dedicated-services-head>p:not(.eyebrow){max-width:390px;color:#706d64;font-size:12px;line-height:1.9;margin:0 0 27px}
+.story-rentals .dedicated-services-head>p:not(.eyebrow){color:#c4c0b7}
+.dedicated-services-grid{display:grid;gap:14px;min-width:0}
+.catering-grid{grid-template-columns:minmax(0,1fr)}
+.rental-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.dedicated-service-card{min-width:0;background:#f0ebe2;border:1px solid #24231d12;overflow:hidden;transform-origin:center bottom;backface-visibility:hidden}
+.story-rentals .dedicated-service-card{background:#2b2d28;border-color:#ffffff16}
+.dedicated-service-image{height:clamp(170px,27vh,280px);position:relative;overflow:hidden;background:#d2c8b9}
+.dedicated-service-image img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.dedicated-service-card:hover .dedicated-service-image img{transform:scale(1.045)}
+.dedicated-service-image span{position:absolute;left:13px;top:12px;color:white;font-size:9px;letter-spacing:.14em;text-shadow:0 1px 8px #0008}
+.dedicated-service-copy{padding:19px 20px 21px}
+.dedicated-service-copy>svg{color:var(--copper);margin-bottom:12px}
+.dedicated-service-copy .eyebrow{font-size:8px;margin:0 0 8px}
+.dedicated-service-copy h3{font-family:'Playfair Display',serif;font-size:clamp(18px,2vw,25px);font-weight:500;line-height:1.1;margin:0 0 8px}
+.dedicated-service-copy>p:not(.eyebrow){font-size:10px;line-height:1.7;color:#77736b;min-height:34px;margin:0 0 13px}
+.story-rentals .dedicated-service-copy>p:not(.eyebrow){color:#bcb7ae}
+.story-rentals .dedicated-service-copy .link{color:#f3eee5}
+.dedicated-services .story-chapter{color:#817a70}
+.story-rentals .story-chapter{color:#aaa49a}
+@media(max-width:900px){
+ .dedicated-services{grid-template-columns:1fr;gap:28px;align-content:center}
+ .dedicated-services-head{max-width:650px}
+ .dedicated-services-head h2{font-size:clamp(42px,7vw,62px)}
+ .dedicated-service-image{height:clamp(150px,22vh,220px)}
+}
+@media(max-width:600px){
+ .dedicated-services{min-height:100svh;padding:92px 6% 82px;gap:22px}
+ .dedicated-services-head h2{font-size:43px;margin-bottom:14px}
+ .dedicated-services-head>p:not(.eyebrow){font-size:11px;line-height:1.7;margin-bottom:18px}
+ .dedicated-services-head .eyebrow{font-size:8px;margin-bottom:13px}
+ .catering-grid{grid-template-columns:1fr}
+ .rental-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+ .dedicated-service-image{height:clamp(115px,17vh,155px)}
+ .dedicated-service-copy{padding:12px 11px 14px}
+ .dedicated-service-copy>svg{width:15px;height:15px;margin-bottom:7px}
+ .dedicated-service-copy h3{font-size:16px}
+ .dedicated-service-copy>p:not(.eyebrow){font-size:9px;line-height:1.5;min-height:38px;margin-bottom:8px}
+ .dedicated-service-copy .link{font-size:9px;gap:5px}
+ .dedicated-service-copy .eyebrow{font-size:7px;margin-bottom:6px}
+}
+@media(prefers-reduced-motion:reduce){
+ .dedicated-service-card,.dedicated-service-image img{transition:none;transform:none!important}
+}
