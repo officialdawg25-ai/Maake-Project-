@@ -51,6 +51,7 @@ function KotaHero({onExplore}){
       const slices=gsap.utils.toArray('.kota-slice',host);
       const labels=gsap.utils.toArray('.kota-layer-label',host);
       if(reduce){gsap.set('.kota-conversion',{autoAlpha:1,y:0});return;}
+      gsap.set(slices,{autoAlpha:1});
       const timeline=gsap.timeline({scrollTrigger:{
         trigger:host,start:'top top',end:()=>'+='+Math.round(window.innerHeight*3.2),
         pin:stage,scrub:0.8,anticipatePin:1,invalidateOnRefresh:true
@@ -75,7 +76,7 @@ function KotaHero({onExplore}){
       </div>
       <div className="kota-visual" aria-label="Maake Enterprise South African Kota, separating into visual layers">
         <img className="kota-photo" src="/images/maake-kota.webp?v=20261127-3" alt="A generously filled South African Kota served on a wooden board with golden chips" loading="eager" decoding="async" fetchPriority="high"/>
-        {sliceNames.map((name,i)=><React.Fragment key={name}><img className="kota-slice" style={{'--slice':i}} src="/images/maake-kota.webp?v=20261127-3" alt="" aria-hidden="true"/><span className="kota-layer-label" style={{'--slice':i}}>{name}</span></React.Fragment>)}
+        {sliceNames.map((name,i)=><React.Fragment key={name}><img className="kota-slice" style={{'--slice':i,clipPath:`inset(${i*12.5}% 0 ${(7-i)*12.5}% 0)`}} src="/images/maake-kota.webp?v=20261127-3" alt="" aria-hidden="true"/><span className="kota-layer-label" style={{'--slice':i}}>{name}</span></React.Fragment>)}
       </div>
       <div className="kota-conversion">
         <p className="eyebrow light">THE MAAKE KOTA COLLECTION</p>

@@ -55,7 +55,7 @@
 .kota-visual{isolation:isolate}
 .kota-photo,.kota-slice{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;will-change:transform,opacity}
 .kota-photo{z-index:1}
-.kota-slice{z-index:2;pointer-events:none;filter:drop-shadow(0 12px 12px #05060555);clip-path:inset(calc(var(--slice)*12.5%) 0 calc(87.5% - var(--slice)*12.5%) 0);opacity:0}
+.kota-slice{z-index:2;pointer-events:none;filter:drop-shadow(0 12px 12px #05060555);clip-path:inset(0 0 0 0);opacity:0}
 .kota-layer-label{position:absolute;z-index:3;left:calc(100% + 10px);top:calc(var(--slice)*12.5% + 4%);white-space:nowrap;color:#e8d5c1;font-size:9px;letter-spacing:.14em;text-transform:uppercase;opacity:0;transform:translateX(-12px);text-shadow:0 2px 8px #000;pointer-events:none}
 .kota-visual:has(.kota-slice){overflow:visible}
 @media(max-width:900px){.kota-layer-label{left:auto;right:0;font-size:8px}}
