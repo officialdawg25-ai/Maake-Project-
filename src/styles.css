@@ -65,3 +65,67 @@
  .kota-layer-label{right:2%;font-size:7px;letter-spacing:.08em;background:#171916b8;padding:4px 6px}
 }
 @media(prefers-reduced-motion:reduce){.kota-slice,.kota-layer-label{display:none}}
+
+/* Home page: one continuous, pinned brand narrative after the Kota hero. */
+.home-story{position:relative;background:var(--paper);isolation:isolate}
+.story-scene{position:relative;min-height:100svh;overflow:hidden;display:flex;flex-direction:column;justify-content:center}
+.story-chapter{position:absolute;right:5.5%;bottom:28px;font-size:8px;letter-spacing:.2em;color:#8b857a;z-index:4}
+.story-intro{padding-top:10vh;padding-bottom:10vh}
+.story-intro .intro-grid{align-items:center}
+.story-intro .intro-grid h2{max-width:720px}
+.story-food{min-height:100svh;grid-template-columns:1.1fr .9fr;align-items:stretch}
+.story-food .food-photo{min-height:100svh;transform-origin:center}
+.story-food .feature-copy{padding:10% 12%;align-self:center}
+.story-services{padding-top:9vh;padding-bottom:9vh}
+.story-services .section-head{margin-bottom:30px}
+.story-services .service-grid{gap:14px}
+.story-services .service-image{height:clamp(135px,21vh,220px)}
+.story-services .service-body{padding:16px 16px 18px}
+.story-services .service-body p{min-height:34px}
+.story-transport{min-height:100svh;grid-template-columns:.9fr 1.1fr;align-items:stretch}
+.story-transport .transport-copy{padding:12%}
+.story-transport .transport-photo{min-height:100svh;transform-origin:center}
+.story-closing{min-height:100svh;align-items:center;text-align:center}
+.story-closing h2{font-size:clamp(60px,8vw,100px);margin:8px 0 20px}
+.story-closing>p:not(.eyebrow){max-width:430px}
+.story-closing .story-chapter{right:5.5%}
+.story-scene .service-card{transform-origin:center bottom;backface-visibility:hidden}
+@media(max-width:900px){
+ .story-services .service-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .story-services .service-image{height:clamp(120px,18vh,180px)}
+ .story-services .service-body{padding:13px}
+}
+@media(max-width:600px){
+ .story-scene{min-height:100svh}
+ .story-intro{padding-top:100px;padding-bottom:90px}
+ .story-intro .intro-grid{gap:14px}
+ .story-intro .intro-grid h2{font-size:42px}
+ .story-food{grid-template-columns:1fr;grid-template-rows:43svh 1fr;min-height:100svh}
+ .story-food .food-photo{min-height:43svh}
+ .story-food .feature-copy{padding:34px 8% 78px}
+ .story-food .feature-copy h2{font-size:48px;margin:0}
+ .story-food .feature-copy>p:not(.eyebrow){margin:14px 0 18px;font-size:11px;line-height:1.7}
+ .story-food .eyebrow{margin-bottom:12px}
+ .story-services{padding-top:92px;padding-bottom:90px}
+ .story-services .section-head{gap:15px;margin-bottom:20px}
+ .story-services .section-head h2{font-size:39px}
+ .story-services .service-grid{grid-template-columns:1fr 1fr;gap:9px}
+ .story-services .service-image{height:clamp(105px,16vh,145px)}
+ .story-services .service-body{padding:11px 10px 13px}
+ .story-services .service-body h3{font-size:15px}
+ .story-services .service-body p{font-size:9px;line-height:1.5;min-height:32px;margin:6px 0}
+ .story-services .service-body>svg{width:16px;height:16px;margin-bottom:8px}
+ .story-services .service-body .link{font-size:9px;gap:5px}
+ .story-transport{grid-template-columns:1fr;grid-template-rows:1fr 43svh;min-height:100svh}
+ .story-transport .transport-copy{padding:85px 8% 40px}
+ .story-transport .transport-copy h2{font-size:49px;margin:0 0 14px}
+ .story-transport .transport-copy>p:not(.eyebrow){font-size:11px;line-height:1.7;margin:0 0 20px}
+ .story-transport .transport-photo{min-height:43svh}
+ .story-closing{padding-top:95px;padding-bottom:100px}
+ .story-closing h2{font-size:60px}
+ .story-chapter{right:7%;bottom:20px;font-size:7px}
+}
+@media(prefers-reduced-motion:reduce){
+ .story-scene{min-height:auto}
+ .story-scene .story-chapter{display:none}
+}
